@@ -47,7 +47,7 @@ public class PatientDataServiceImpl implements PatientDataService {
     @Override
     public PatientData getPatientDataByID(int patientDataId) {
         return patientDataRepository.findById(patientDataId)
-                .orElseThrow(() -> new IllegalArgumentException(""));
+                .orElseThrow(() -> new IllegalArgumentException("Patient data not found. Id: " + patientDataId));
     }
 
     @Override
