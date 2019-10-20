@@ -1,30 +1,27 @@
 package com.demo.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
-@Entity
-public class PatientData {
+@Entity()
+public class PatientData  implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int patientDataId;
     private LocalDate createDate;
-    private String titleOfRecord;
+    private String titleOfData;
 
     @Lob
-    private String patientRecord;
-
-    @ManyToOne
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
+    private String patientDataText;
 
     public PatientData() {
     }
 
-    public PatientData(LocalDate createDate, String patientRecord, String titleOfRecord) {
+    public PatientData(LocalDate createDate, String patientDataText, String titleOfData) {
         this.createDate = createDate;
-        this.patientRecord = patientRecord;
-        this.titleOfRecord = titleOfRecord;
+        this.patientDataText = patientDataText;
+        this.titleOfData = titleOfData;
     }
 
     public LocalDate getCreateDate() {
@@ -35,35 +32,27 @@ public class PatientData {
         this.createDate = createDate;
     }
 
-    public String getTitleOfRecord() {
-        return titleOfRecord;
+    public int getPatientDataId() {
+        return patientDataId;
     }
 
-    public void setTitleOfRecord(String titleOfRecord) {
-        this.titleOfRecord = titleOfRecord;
+    public void setPatientDataId(int patientDataId) {
+        this.patientDataId = patientDataId;
     }
 
-    public Patient getPatient() {
-        return patient;
+    public String getPatientDataText() {
+        return patientDataText;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void setPatientDataText(String patientDataText) {
+        this.patientDataText = patientDataText;
     }
 
-    public int getId() {
-        return id;
+    public String getTitleOfData() {
+        return titleOfData;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getPatientRecord() {
-        return patientRecord;
-    }
-
-    public void setPatientRecord(String patientRecord) {
-        this.patientRecord = patientRecord;
+    public void setTitleOfData(String titleOfData) {
+        this.titleOfData = titleOfData;
     }
 }

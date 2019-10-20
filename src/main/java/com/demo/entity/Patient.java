@@ -1,11 +1,16 @@
 package com.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity
-public class Patient {
+@Entity()
+public class Patient implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int patientId;
@@ -18,8 +23,9 @@ public class Patient {
     private String patientAddress;
 
 
-    @OneToMany(mappedBy = "patient")
-    @Transient
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "patientId", referencedColumnName = "patientId")
+    @Fetch(FetchMode.SELECT)
     private List<PatientData> patientData;
 
     public Patient() {

@@ -5,6 +5,7 @@ import com.demo.entity.Patient;
 import com.demo.entity.PatientData;
 import com.demo.service.PatientDataService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -20,12 +21,9 @@ public class PatientDataServiceImpl implements PatientDataService {
 
     @Override
     public boolean savePatientData(int patientId, PatientData patientData) {
-//        override
         try {
-            Patient patient = patientService.getPatientById(patientId);
-            patientDataRepository.saveAndFlush(patientData);
-            patientData.setPatient(patient);
-            patientDataRepository.save(patientData);
+           Patient patient = patientService.getPatientById(patientId);
+            patient.getPatientData().add(patientData);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
