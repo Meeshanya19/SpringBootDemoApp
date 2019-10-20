@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@Entity()
+@Entity
 public class PatientData  implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,15 +14,6 @@ public class PatientData  implements Serializable{
 
     @Lob
     private String patientDataText;
-
-    public PatientData() {
-    }
-
-    public PatientData(LocalDate createDate, String patientDataText, String titleOfData) {
-        this.createDate = createDate;
-        this.patientDataText = patientDataText;
-        this.titleOfData = titleOfData;
-    }
 
     public LocalDate getCreateDate() {
         return createDate;

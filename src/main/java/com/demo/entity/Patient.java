@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity()
+@Entity
 public class Patient implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,25 +22,10 @@ public class Patient implements Serializable {
     private String patientState;
     private String patientAddress;
 
-
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "patientId", referencedColumnName = "patientId")
     @Fetch(FetchMode.SELECT)
     private List<PatientData> patientData;
-
-    public Patient() {
-    }
-
-    public Patient(String patientAddress, String patientCountry, LocalDate patientDateOfBirth, String patientFirstName,
-                   String patientLastName, String patientSex, String patientState) {
-        this.patientAddress = patientAddress;
-        this.patientCountry = patientCountry;
-        this.patientDateOfBirth = patientDateOfBirth;
-        this.patientFirstName = patientFirstName;
-        this.patientLastName = patientLastName;
-        this.patientSex = patientSex;
-        this.patientState = patientState;
-    }
 
     public List<PatientData> getPatientData() {
         return patientData;
