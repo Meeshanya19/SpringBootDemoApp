@@ -85,8 +85,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<gcloud.plugin.version>117</gcloud.plugin.version>
-
+				
 		</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
