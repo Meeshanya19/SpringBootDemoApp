@@ -1,1 +1,1 @@
-web: java -jar target/SpringBootDemoApp.jar
+web: java -jar target/spring-boot-angular-by-pikh.jar
